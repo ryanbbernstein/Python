@@ -5,9 +5,10 @@ from tkFileDialog import askopenfilename
 
 import PIL
 from PIL import ImageOps
+DIRECTORY = # directory for all logos e.g. "/Users/user/desktop/logos/"
 
 def create_folder():
-	directory = "/Users/YAPI/Dropbox (YAPI)/YAPI (3)/YAPI/Dental Office Logo's/" + officeName.get()
+	directory = DIRECTORY + officeName.get()
 	print directory
 	try:
 		os.makedirs(directory)
@@ -37,7 +38,7 @@ img = PIL.Image.open(filename)
 wpercent = (600 / float(img.size[0]))
 hsize = int((float(img.size[1]) * float(wpercent)))
 img = img.resize((600, hsize), PIL.Image.ANTIALIAS)
-img.save("/Users/YAPI/Dropbox (YAPI)/YAPI (3)/YAPI/Dental Office Logo's/" + officeName.get() + "/logo600.png")
+img.save(DIRECTORY + officeName.get() + "/logo600.png")
 
 img = PIL.Image.open(filename)
 hpercent = (100 / float(img.size[1]))
@@ -46,4 +47,4 @@ img = img.resize((wsize, 100), PIL.Image.ANTIALIAS)
 w = (int(640 - img.size[0])/2)
 img = ImageOps.expand(img, border = w, fill = color)
 img = ImageOps.fit(img, (640, 100), 0, 0, (0.5,0.5))
-img.save("/Users/YAPI/Dropbox (YAPI)/YAPI (3)/YAPI/Dental Office Logo's/" + officeName.get() + "/logo640x100.png")
+img.save(DIRECTORY + officeName.get() + "/logo640x100.png")
